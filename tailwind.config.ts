@@ -1,6 +1,6 @@
-import type { Config } from "tailwindcss";
+import { Config } from 'tailwindcss';
 
-export default {
+const config: Config = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,10 +9,20 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        offBlack: "#222222",
+        minimalistGray: "#F5F5F5"
       },
+      fontFamily: {
+        poppins: ['Poppins', 'sans-serif']
+      },
+      maxWidth: {
+        'standard': '1500px',
+      },
+      spacing: {
+        'standard': '20px', 
+      }
     },
   },
-  plugins: [],
-} satisfies Config;
+};
+
+export default config;
