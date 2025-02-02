@@ -12,7 +12,7 @@ const FAQ = () => {
     const [activeIndex, setActiveIndex] = useState<number | null>(null)
 
     return (
-        <div className="">
+        <div className="default-container">
             <div className="grid xl:grid-cols-[40%_60%] lg:grid-cols-[40%_60%] gap-8">
                 {/* Left Column - Header Section */}
                 <div className="space-y-4">
