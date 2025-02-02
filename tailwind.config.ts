@@ -13,7 +13,7 @@ const config: Config = {
         minimalistGray: "#F5F5F5"
       },
       fontFamily: {
-        poppins: ['Poppins', 'sans-serif']
+        rethink: ['Rethink Sans', 'sans-serif']
       },
       maxWidth: {
         'standard': '1500px',
