@@ -6,6 +6,31 @@ export const navBarLinks = [
     { label: "Sign In", link: "" }
 ]
 
+export const about = [
+    {
+        title: "Highschool Student",
+        icon: "FaGraduationCap",
+        points: [
+            "One-on-one personalized tutoring sessions",
+            "Comprehensive study materials and practice tests",
+            "Flexible scheduling to fit your academic calendar",
+            "Progress tracking and performance analytics",
+            "Expert guidance in Cambridge exam preparation"
+        ]
+    },
+    {
+        title: "Youth-Led Organization",
+        icon: "FaPeopleGroup",
+        points: [
+            "Collaborative learning environment",
+            "Group tutoring sessions at discounted rates",
+            "Custom curriculum development",
+            "Regular progress reports for organization leaders",
+            "Dedicated support for educational initiatives"
+        ]
+    }
+]
+
 export const FAQs = [
     {
         question: "What technologies does this starter kit include?",

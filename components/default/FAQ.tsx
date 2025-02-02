@@ -7,7 +7,7 @@ import Text from './Text'
 import { IoAdd } from 'react-icons/io5'
 import { motion, AnimatePresence } from 'framer-motion'
 
-export const FAQ = () => {
+const FAQ = () => {
     // Track which FAQ item is currently open
     const [activeIndex, setActiveIndex] = useState<number | null>(null)
 
@@ -70,3 +70,5 @@ export const FAQ = () => {
         </div>
     )
 }
+
+export default FAQ
