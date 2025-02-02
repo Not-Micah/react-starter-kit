@@ -53,3 +53,17 @@ export const FAQs = [
         answer: "Absolutely! This starter kit is open-source and free to use for both personal and commercial projects."
     }
 ]
+
+export const organizationInfo = {
+    name: "Cambridge Tutor",
+    description: "We're on a mission to make education accessible to everyone. Our platform provides personalized tutoring and resources to help students excel in their studies.",
+    joinButtonText: "Join Now",
+    joinButtonLink: "/register"
+}
+
+export const socialLinks = [
+    { name: "Twitter", icon: "FaTwitter", link: "https://twitter.com" },
+    { name: "LinkedIn", icon: "FaLinkedin", link: "https://linkedin.com" },
+    { name: "Instagram", icon: "FaInstagram", link: "https://instagram.com" },
+    { name: "GitHub", icon: "FaGithub", link: "https://github.com" }
+]

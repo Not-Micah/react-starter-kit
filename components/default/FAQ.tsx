@@ -30,7 +30,7 @@ const FAQ = () => {
                             <div
                                 onClick={() => setActiveIndex(activeIndex === index ? null : index)}
                                 className={`flex justify-between items-center space-x-4 py-4 cursor-pointer border-t border-gray-200 ${
-                                    activeIndex === index ? 'text-blue-600' : 'text-gray-900'
+                                    activeIndex === index ? 'text-primary' : 'text-gray-900'
                                 }`}
                             >
                                 <Text className="font-medium">

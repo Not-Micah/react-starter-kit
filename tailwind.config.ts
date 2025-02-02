@@ -10,16 +10,22 @@ const config: Config = {
     extend: {
       colors: {
         offBlack: "#222222",
-        minimalistGray: "#F5F5F5"
+        minimalistGray: "#F5F5F5",
+        primary: {
+          DEFAULT: '#2563eb', // Blue
+          hover: '#1d4ed8'
+        },
+        secondary: {
+          DEFAULT: '#4f46e5', // Indigo
+          hover: '#4338ca'
+        },
+        accent: {
+          DEFAULT: '#06b6d4', // Cyan
+          hover: '#0891b2'
+        }
       },
       fontFamily: {
         rethink: ['Rethink Sans', 'sans-serif']
-      },
-      maxWidth: {
-        'standard': '1500px',
-      },
-      spacing: {
-        'standard': '20px', 
       }
     },
   },

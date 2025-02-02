@@ -19,7 +19,7 @@ const About = () => {
         <div className="space-y-8">
             {/* Header */}
             <div className="default-container space-y-4">
-                <Subheading>
+                <Subheading className="max-w-[800px]">
                     Supercharge your app instantly, launch faster, make $
                 </Subheading>
                 <Text>
@@ -64,7 +64,7 @@ const About = () => {
                         >
                             {about[activeIndex].points.map((point, index) => (
                                 <div key={index} className="flex items-start space-x-3">
-                                    <FaCheck className="w-4 h-4 text-blue-600 mt-1 flex-shrink-0" />
+                                    <FaCheck className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
                                     <Text>{point}</Text>
                                 </div>
                             ))}

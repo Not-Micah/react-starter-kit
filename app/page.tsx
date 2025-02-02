@@ -12,6 +12,7 @@ import { HiLightningBolt } from "react-icons/hi";
 import FAQ from "@/components/default/FAQ"
 import About from "@/components/default/About"
 import Demo from "@/components/default/Demo"
+import Footer from "@/components/default/Footer"
 
 const Home = () => {
   return (
@@ -32,6 +33,8 @@ const Home = () => {
         <FAQ />
         <Demo />
       </div>
+
+      <Footer />
     </div>
   )
 }

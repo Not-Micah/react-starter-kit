@@ -11,7 +11,7 @@ const NavModal = () => {
     return (
         <nav
             className={`
-                fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
+                z-10 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
                 w-[100vw] h-[100vh]
                 flex flex-col
                 px-8 py-12

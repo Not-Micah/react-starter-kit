@@ -11,10 +11,10 @@ const NavBar = () => {
   return (
     <nav
       className={`
-        fixed top-[20px] left-1/2 transform -translate-x-1/2
+        z-10 fixed top-[20px] left-1/2 transform -translate-x-1/2
         max-w-[1520px] w-[calc(100%-40px)]
         flex justify-between items-center
-        px-8 py-4
+        px-8 py-3
         rounded-2xl 
         bg-white/70 backdrop-blur-sm
         shadow-md
@@ -36,7 +36,7 @@ const NavBar = () => {
             href={item.link}
             className="text-offBlack/80 hover:text-offBlack transition-colors"
           >
-            <Text>{item.label}</Text>
+            <p>{item.label}</p>
           </a>
         ))}
       </div>
