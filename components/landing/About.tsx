@@ -2,8 +2,8 @@
 
 import { useState } from 'react'
 import { about } from '@/data'
-import Subheading from './Subheading'
-import Text from './Text'
+import Subheading from '../common/Subheading'
+import Text from '../common/Text'
 import { FaGraduationCap, FaPeopleGroup, FaCheck } from 'react-icons/fa6'
 import { motion, AnimatePresence } from 'framer-motion'
 

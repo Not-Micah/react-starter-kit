@@ -67,3 +67,30 @@ export const socialLinks = [
     { name: "Instagram", icon: "FaInstagram", link: "https://instagram.com" },
     { name: "GitHub", icon: "FaGithub", link: "https://github.com" }
 ]
+
+export const testimonials = [
+    {
+        name: "Sarah Johnson",
+        rating: 5,
+        title: "High School Student",
+        testimonial: "The personalized tutoring sessions have been incredibly helpful. My grades have improved significantly, and I feel much more confident in my studies."
+    },
+    {
+        name: "Michael Chen",
+        rating: 5,
+        title: "Student Council President",
+        testimonial: "Working with this platform has transformed our student support system. The flexible scheduling and comprehensive materials have made a real difference in our academic community."
+    },
+    {
+        name: "Emily Rodriguez",
+        rating: 4,
+        title: "Cambridge Student",
+        testimonial: "The exam preparation resources are excellent. I particularly appreciate the practice tests and detailed feedback provided by the tutors."
+    },
+    {
+        name: "David Kim",
+        rating: 5,
+        title: "Youth Organization Leader",
+        testimonial: "The group tutoring sessions have been a game-changer for our organization. The custom curriculum perfectly aligns with our educational goals."
+    }
+]

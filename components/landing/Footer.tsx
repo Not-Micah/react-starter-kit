@@ -1,7 +1,7 @@
 import { organizationInfo, socialLinks } from '@/data'
 import { FaTwitter, FaLinkedin, FaInstagram, FaGithub } from 'react-icons/fa6'
-import ButtonLink from './ButtonLink'
-import Text from './Text'
+import ButtonLink from '../common/ButtonLink'
+import Text from '../common/Text'
 
 const iconMap = {
     FaTwitter,

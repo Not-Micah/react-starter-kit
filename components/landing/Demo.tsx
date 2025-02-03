@@ -1,9 +1,9 @@
-import Subheading from './Subheading'
+import Subheading from "../common/Subheading"
 
 const Demo = () => {
     return (
         <div className="default-container space-y-12">
-            <Subheading className="text-center">Still not convinced?</Subheading>
+            <Subheading className="text-center">Still Not Convinced?</Subheading>
 
             {/* Video Container */}
             <div className="relative max-w-[1000px] mx-auto aspect-video rounded-xl overflow-hidden bg-gray-100">

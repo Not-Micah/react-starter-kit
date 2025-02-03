@@ -3,7 +3,7 @@
 import { navBarLinks } from "@/data";
 import { RxHamburgerMenu } from "react-icons/rx";
 import useNavModal from "@/hooks/useNavModal";
-import Text from "./Text";
+import Text from "../common/Text";
 
 const NavBar = () => {
   const { onOpen } = useNavModal();

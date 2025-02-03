@@ -1,18 +1,18 @@
-import NavBar from "@/components/default/NavBar"
-import NavModal from "@/components/default/NavModal"
+import NavBar from "@/components/landing/NavBar"
+import NavModal from "@/components/landing/NavModal"
 
-import Heading from "@/components/default/Heading"
-import Subheading from "@/components/default/Subheading"
-import Text from "@/components/default/Text"
+import Heading from "@/components/common/Heading"
+import Subheading from "@/components/common/Subheading"
+import Text from "@/components/common/Text"
+import ButtonLink from "@/components/common/ButtonLink"
 
-import ButtonLink from "@/components/default/ButtonLink"
+import { HiLightningBolt } from "react-icons/hi"
 
-import { HiLightningBolt } from "react-icons/hi";
-
-import FAQ from "@/components/default/FAQ"
-import About from "@/components/default/About"
-import Demo from "@/components/default/Demo"
-import Footer from "@/components/default/Footer"
+import About from "@/components/landing/About"
+import Demo from "@/components/landing/Demo"
+import FAQ from "@/components/landing/FAQ"
+import Testimonials from "@/components/landing/Testimonials"
+import Footer from "@/components/landing/Footer"
 
 const Home = () => {
   return (
@@ -27,11 +27,11 @@ const Home = () => {
         <ButtonLink href="/login" className="mb-[100px]" icon={<HiLightningBolt />}>Login</ButtonLink>
       </div>
       
-
       <div className="space-y-32 mb-[100px]">
         <About />
-        <FAQ />
         <Demo />
+        <FAQ />
+        <Testimonials />
       </div>
 
       <Footer />

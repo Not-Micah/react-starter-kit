@@ -2,8 +2,8 @@
 
 import { useState } from 'react'
 import { FAQs } from '@/data'
-import Subheading from './Subheading'
-import Text from './Text'
+import Subheading from '../common/Subheading'
+import Text from '../common/Text'
 import { IoAdd } from 'react-icons/io5'
 import { motion, AnimatePresence } from 'framer-motion'
 

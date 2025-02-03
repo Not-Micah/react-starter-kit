@@ -3,7 +3,7 @@
 import { navBarLinks } from "@/data";
 import useNavModal from "@/hooks/useNavModal";
 import { IoCloseOutline } from "react-icons/io5";
-import Text from "./Text";
+import Text from "../common/Text";
 
 const NavModal = () => {
     const { onClose, isOpen } = useNavModal();
