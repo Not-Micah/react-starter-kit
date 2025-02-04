@@ -6,6 +6,7 @@ import Subheading from '../common/Subheading'
 import Text from '../common/Text'
 import { FaGraduationCap, FaPeopleGroup, FaCheck } from 'react-icons/fa6'
 import { motion, AnimatePresence } from 'framer-motion'
+import WithBackground from '../decorations/WithBackground'
 
 const iconMap = {
     FaGraduationCap,
@@ -49,29 +50,31 @@ const About = () => {
                     )
                 })}
             </div>
-
+            
             {/* Content Points */}
-            <div className="bg-gray-100 py-8">
-                <div className="default-container space-y-4">
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={activeIndex}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            transition={{ duration: 0.2 }}
-                            className="space-y-3"
-                        >
-                            {about[activeIndex].points.map((point, index) => (
-                                <div key={index} className="flex items-start space-x-3">
-                                    <FaCheck className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
-                                    <Text>{point}</Text>
-                                </div>
-                            ))}
-                        </motion.div>
-                    </AnimatePresence>
+            <WithBackground color="#F1F1F1" tiltDegree={-2} borderHeight={40}>
+                <div className="py-20">
+                    <div className="default-container space-y-4">
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={activeIndex}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -20 }}
+                                transition={{ duration: 0.2 }}
+                                className="space-y-3"
+                            >
+                                {about[activeIndex].points.map((point, index) => (
+                                    <div key={index} className="flex items-start space-x-3">
+                                        <FaCheck className="w-4 h-4 text-header mt-1 flex-shrink-0" />
+                                        <p className='dynamic-text'>{point}</p>
+                                    </div>
+                                ))}
+                            </motion.div>
+                        </AnimatePresence>
+                    </div>
                 </div>
-            </div>
+            </WithBackground>
         </div>
     )
 }

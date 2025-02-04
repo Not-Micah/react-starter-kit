@@ -8,6 +8,7 @@ import ButtonLink from "@/components/common/ButtonLink"
 
 import { HiLightningBolt } from "react-icons/hi"
 
+import Hero from "@/components/landing/Hero"
 import About from "@/components/landing/About"
 import Demo from "@/components/landing/Demo"
 import FAQ from "@/components/landing/FAQ"
@@ -20,14 +21,8 @@ const Home = () => {
       <NavBar />
       <NavModal />
 
-      <div className="default-container">
-        <Heading className="mt-[200px]">Your Personalized Cambridge Tutor</Heading>
-        <Subheading>Get the help you need to succeed</Subheading>
-        <Text className="mb-[100px]">Our platform is designed to provide you with the support you need to succeed. Whether you're a beginner or a seasoned pro, we've got you covered.</Text>
-        <ButtonLink href="/login" className="mb-[100px]" icon={<HiLightningBolt />}>Login</ButtonLink>
-      </div>
-      
       <div className="space-y-32 mb-[100px]">
+        <Hero />
         <About />
         <Demo />
         <FAQ />
