@@ -23,7 +23,9 @@ export interface Props {
 }
 
 export const UserContextProvider = ({ children, ...props }: Props) => {
+  const app = initializeFirebase();
   const auth = getUserAuth(true);
+  
   const [user, setUser] = useState<User | null | undefined>(undefined);
   const [userData, setUserData] = useState<DocumentData | null | undefined>(
     undefined
@@ -47,6 +49,7 @@ export const UserContextProvider = ({ children, ...props }: Props) => {
 // Hook For Accessing User Context
 export const useUser = () => {
   const context = useContext(UserContext);
-  if (!context) throw new Error("useUser must be used within a UserContextProvider");
+  if (!context)
+    throw new Error("useUser must be used within a UserContextProvider");
   return context;
 };
