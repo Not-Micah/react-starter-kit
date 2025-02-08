@@ -1,11 +1,12 @@
-// @ts-expect-error The package does not provide proper TypeScript declarations
-import { SpinnerCircularFixed } from 'spinners-react';
+"use client";
+
+import { MoonLoader } from "react-spinners"
 
 const Loader = () => {
   return (
     <div className='w-[100vw] h-[100vh]
     flex justify-center items-center'>
-        <SpinnerCircularFixed size={70} thickness={180} speed={69} color="#36ad47" secondaryColor="rgba(0, 0, 0, 0.44)" />
+      <MoonLoader size={75} color="#36d7b7" speedMultiplier={0.25} /> 
     </div>
   )
 }
