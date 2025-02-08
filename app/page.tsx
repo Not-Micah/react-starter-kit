@@ -15,11 +15,15 @@ import FAQ from "@/components/landing/FAQ"
 import Testimonials from "@/components/landing/Testimonials"
 import Footer from "@/components/landing/Footer"
 
+import Loader from "@/components/common/Loader"
+
 const Home = () => {
   return (
     <div className="">
       <NavBar />
       <NavModal />
+
+      <Loader />
 
       <div className="space-y-32 mb-[100px]">
         <Hero />
