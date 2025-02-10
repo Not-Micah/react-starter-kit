@@ -20,12 +20,12 @@ import Loader from "@/components/common/Loader"
 const Home = () => {
   return (
     <div className="">
-      <NavBar />
-      <NavModal />
+      {/* <NavBar />
+      <NavModal /> */}
 
       <Loader />
 
-      <div className="space-y-32 mb-[100px]">
+      {/* <div className="space-y-32 mb-[100px]">
         <Hero />
         <About />
         <Demo />
@@ -33,7 +33,7 @@ const Home = () => {
         <Testimonials />
       </div>
 
-      <Footer />
+      <Footer /> */}
     </div>
   )
 }
