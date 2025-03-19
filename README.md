@@ -1,36 +1,109 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Firebase + Stripe Payments Setup
 
-## Getting Started
+Follow these steps to set up **Firebase** with **Stripe payments** using `invertase/firestore-stripe-payments@0.3.9`.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 1️⃣ Create a Firebase Project & Enable Google Authentication
+
+1. **Go to** [Firebase Console](https://console.firebase.google.com/).
+2. **Create a new project** and **add a web app**.
+3. **Enable Google Authentication**:
+   - Navigate to `Build > Authentication > Sign-in Method`.
+   - Enable **Google** as a sign-in provider.
+4. **Set Firestore Security Rules** (Copy & Paste the rules below):
+
+```ts
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow EVERYONE to read AND write ALL documents in Firestore
+    match /{document=**} {
+      allow read, write: if true;
+    }
+
+    // Stripe-specific security (DO NOT CHANGE)
+    match /customers/{uid} {
+      allow read: if request.auth.uid == uid;
+
+      match /checkout_sessions/{id} {
+        allow read, write: if request.auth.uid == uid;
+      }
+      match /subscriptions/{id} {
+        allow read: if request.auth.uid == uid;
+      }
+      match /payments/{id} {
+        allow read: if request.auth.uid == uid;
+      }
+    }
+
+    match /products/{id} {
+      allow read: if true;
+      match /prices/{id} { allow read: if true; }
+      match /tax_rates/{id} { allow read: if true; }
+    }
+  }
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 2️⃣ Install `firestore-stripe-payments`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Run the following command to install the Stripe extension:
 
-## Learn More
+```sh
+firebase ext:install invertase/firestore-stripe-payments@0.3.9
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 🔹 **During Installation:**
+- **Cloud Functions Location** → `us-central1 (Iowa)` (default)
+- **Stripe API Key** → Use a **restricted key** with:
+  - **Write access**: `Customers`, `Checkout Sessions`, `Customer Portal`
+  - **Read access**: `Subscriptions`, `Prices`
+- **Leave Webhook URL empty for now** (to be set later).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 3️⃣ Configure Stripe Webhooks
 
-## Deploy on Vercel
+1. **Go to** [Stripe Webhooks](https://dashboard.stripe.com/webhooks).
+2. **Create a new webhook** and add the endpoint provided by `firestore-stripe-payments`.
+3. **Enable the following events:**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+✅ **Required Events:**
+- `product.created`, `product.updated`, `product.deleted`
+- `price.created`, `price.updated`, `price.deleted`
+- `checkout.session.completed`
+- `customer.subscription.created`, `customer.subscription.updated`, `customer.subscription.deleted`
+- `payment_intent.processing`, `payment_intent.succeeded`, `payment_intent.canceled`, `payment_intent.payment_failed`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+🔹 **Optional Events (for invoices & tax rates):**
+- `tax_rate.created`, `tax_rate.updated`
+- `invoice.paid`, `invoice.payment_succeeded`, `invoice.payment_failed`
+- `invoice.upcoming`, `invoice.marked_uncollectible`, `invoice.payment_action_required`
+
+4. **Copy the Signing Secret** provided by Stripe.
+5. **Paste it into the** `Stripe webhook secret` **field in Firebase**.
+
+---
+
+## 4️⃣ Create a Product in Stripe
+
+1. **Go to** [Stripe Dashboard](https://dashboard.stripe.com/products).
+2. **Create a new product** and set a price.
+3. **Copy the Price ID** (you'll need it for checkout).
+
+---
+
+## ✅ You're All Set!
+
+Use the **prewritten functions and components** to integrate Stripe into your app! 🎉
+
+---
+
+## 🔗 Useful Links
+- [Firebase Console](https://console.firebase.google.com/)
+- [Stripe Dashboard](https://dashboard.stripe.com/)
+- [Firestore Stripe Payments Docs](https://github.com/invertase/firestore-stripe-payments)
+
