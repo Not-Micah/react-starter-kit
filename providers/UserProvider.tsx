@@ -2,15 +2,17 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 import { DocumentData } from "firebase/firestore";
-import { Auth, User } from "firebase/auth";
+import { User } from "firebase/auth";
 
 import { initializeFirebase, getUserAuth } from "@/utils/databaseFunctions";
 import { getUser } from "@/utils/userFunctions";
+import { getPremiumStatus } from "@/utils/stripeFunctions";
 
 // Context Type Definition
 type UserContextType = {
   user: User | null | undefined;
   userData: DocumentData | null | undefined;
+  isPremium: boolean;
 };
 
 // Creating User Context
@@ -30,17 +32,39 @@ export const UserContextProvider = ({ children, ...props }: Props) => {
   const [userData, setUserData] = useState<DocumentData | null | undefined>(
     undefined
   );
+  const [isPremium, setIsPremium] = useState<boolean>(false);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (firebaseUser) => {
-      setUser(firebaseUser);
-      setUserData(firebaseUser ? await getUser(firebaseUser.uid) : null);
+      if (firebaseUser) {
+        // Get User Data
+        const userDoc = await getUser(firebaseUser.uid);
+        
+        // Update User States
+        setUser(firebaseUser);
+        setUserData(userDoc);
+        
+        // Check Premium Status
+        try {
+          const premiumStatus = await getPremiumStatus();
+          setIsPremium(premiumStatus);
+        } catch (error) {
+          console.error("Error checking premium status:", error);
+          setIsPremium(false);
+        }
+      } else {
+        // Update States During Logout..
+        setUser(null);
+        setUserData(null);
+        setIsPremium(false);
+      }
     });
+    
     return () => unsubscribe();
   }, [auth]);
 
   return (
-    <UserContext.Provider value={{ user, userData }} {...props}>
+    <UserContext.Provider value={{ user, userData, isPremium }} {...props}>
       {children}
     </UserContext.Provider>
   );
