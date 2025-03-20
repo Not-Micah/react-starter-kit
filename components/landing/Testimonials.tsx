@@ -2,82 +2,71 @@
 
 import Subheading from "../common/Subheading"
 import Text from "../common/Text"
-import { testimonials } from "@/data"
+import { testimonials } from "@/data/index"
 import { FaStar, FaQuoteLeft } from "react-icons/fa"
-import { motion } from "framer-motion"
 
-/**
- * Testimonials section displaying user reviews in a grid layout
- */
 const Testimonials = () => {
     return (
-        <div className="default-container py-16 space-y-12">
-            {/* Header Section */}
-            <div className="max-w-2xl mx-auto space-y-3 text-center">
-                <Subheading className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-700">
-                    Our Wall of Love
-                </Subheading>
-                <Text className="text-gray-500">
-                    Read what our users have to say about Me2.
-                </Text>
-            </div>
-            
-            {/* Testimonials Grid */}
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                {testimonials.map((testimonial, index) => (
-                    <motion.div 
-                        key={index}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.1 }}
-                        className="bg-white rounded-xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300"
-                    >
-                        <div className="flex flex-col h-full">
-                            {/* Quote Icon */}
-                            <div className="mb-4">
-                                <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center">
-                                    <FaQuoteLeft className="w-3.5 h-3.5 text-blue-500" />
-                                </div>
-                            </div>
+        <div id="testimonials" className="relative py-16 md:py-24 bg-white">
+            <div className="default-container px-4 sm:px-6">
+                {/* Header Section */}
+                <div className="max-w-2xl mx-auto space-y-4 text-center mb-12 md:mb-16">
+                    <Subheading className="text-blue-500">
+                        Customer Testimonials
+                    </Subheading>
+                    <Text className="text-lg md:text-xl text-gray-600">
+                        Read what our users have to say about our platform
+                    </Text>
+                </div>
 
-                            {/* Star Rating */}
-                            <div className="flex items-center gap-1 mb-3">
-                                {[...Array(5)].map((_, i) => (
-                                    <FaStar
-                                        key={i}
-                                        className={`w-3.5 h-3.5 ${
-                                            i < testimonial.rating
-                                                ? "text-yellow-400"
-                                                : "text-gray-200"
-                                        }`}
-                                    />
-                                ))}
+                {/* Testimonials Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                    {testimonials.map((testimonial, index) => (
+                        <div 
+                            key={index}
+                            className="
+                                bg-white
+                                p-4 sm:p-6
+                                rounded-lg
+                                border border-gray-100
+                                transition-all
+                                hover:shadow-sm
+                            "
+                        >
+                            {/* Author and Rating */}
+                            <div className="flex flex-col xs:flex-row justify-between items-start mb-4">
+                                <div className="flex flex-col xs:flex-row items-center xs:items-center gap-2 sm:gap-3 w-full xs:w-auto">
+                                    <div className="w-10 h-10 sm:w-10 sm:h-10 rounded-full overflow-hidden bg-gray-100 flex-shrink-0 mb-2 xs:mb-0">
+                                        <div className="w-full h-full bg-blue-500 flex items-center justify-center text-white font-medium">
+                                            {testimonial.name.split(' ').map(n => n[0]).join('')}
+                                        </div>
+                                    </div>
+                                    <div className="min-w-0 max-w-full xs:max-w-[140px] sm:max-w-full text-center xs:text-left">
+                                        <Text className="font-medium text-gray-900 text-sm sm:text-base">
+                                            {testimonial.name}
+                                        </Text>
+                                        <Text className="text-xs sm:text-sm text-gray-500 truncate whitespace-nowrap overflow-hidden">
+                                            {testimonial.title}
+                                        </Text>
+                                    </div>
+                                </div>
+                                <div className="flex text-yellow-400 mt-2 xs:mt-0 self-center xs:self-start">
+                                    {[...Array(testimonial.rating)].map((_, i) => (
+                                        <FaStar key={i} className="w-3 h-3 sm:w-4 sm:h-4" />
+                                    ))}
+                                </div>
                             </div>
                             
                             {/* Testimonial Content */}
-                            <p className="text-base text-gray-600 flex-grow">
-                                "{testimonial.testimonial}"
-                            </p>
-                            
-                            {/* Author Information */}
-                            <div className="mt-6 pt-6 border-t border-gray-100">
-                                <div className="flex items-center justify-between">
-                                    <div>
-                                        <h4 className="font-medium text-base text-gray-900">
-                                            {testimonial.name}
-                                        </h4>
-                                        <p className="text-base text-gray-500 mt-0.5">
-                                            {testimonial.title}
-                                        </p>
-                                    </div>
-                                    <div className="w-9 h-9 rounded-full bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center text-base font-medium text-blue-600">
-                                        {testimonial.name.split(' ').map(n => n[0]).join('')}
-                                    </div>
-                                </div>
+                            <div className="relative">
+                                <FaQuoteLeft className="absolute -top-1 -left-1 w-3 h-3 text-blue-100" />
+                                <Text className="text-gray-600 pl-4 text-sm sm:text-base">
+                                    {testimonial.testimonial}
+                                </Text>
                             </div>
                         </div>
-                    </motion.div>
-                ))}
+                    ))}
+                </div>
             </div>
         </div>
     )

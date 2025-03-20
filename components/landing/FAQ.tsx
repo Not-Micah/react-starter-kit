@@ -1,90 +1,98 @@
 "use client";
 
 import { useState } from 'react'
-import { FAQs } from '@/data'
+import { FAQs } from '@/data/index'
 import Subheading from '../common/Subheading'
 import Text from '../common/Text'
 import { IoAdd } from 'react-icons/io5'
 import { motion, AnimatePresence } from 'framer-motion'
 
-/**
- * FAQ component with expandable questions and answers.
- * Features smooth animations and modern styling.
- */
 const FAQ = () => {
     const [activeIndex, setActiveIndex] = useState<number | null>(null)
 
     return (
-        <div className="default-container py-16">
-            <div className="grid lg:grid-cols-[35%_1fr] gap-12">
-                {/* Header Section */}
-                <div className="space-y-3">
-                    <Subheading className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-700">
-                        Frequently Asked Questions
-                    </Subheading>
-                    <Text className="text-gray-500">
-                        Have another question? Contact me on Twitter or by email.
-                    </Text>
-                </div>
+        <div id="faq" className="relative py-16 md:py-24 bg-white">
+            <div className="default-container px-4 sm:px-6">
+                <div className="max-w-3xl mx-auto">
+                    {/* Header Section */}
+                    <div className="text-center space-y-3 sm:space-y-4 mb-12 md:mb-16">
+                        <Subheading className="text-blue-500">
+                            Frequently Asked Questions
+                        </Subheading>
+                        <Text className="text-base sm:text-lg md:text-xl text-gray-600">
+                            Have another question? Contact us by email
+                        </Text>
+                    </div>
 
-                {/* FAQ Items */}
-                <div className="space-y-1">
-                    {FAQs.map((faq, index) => (
-                        <div key={index}>
-                            <div
-                                className={`
-                                    rounded-lg overflow-hidden
-                                    ${activeIndex === index ? 'bg-blue-50' : ''}
-                                `}
-                            >
-                                {/* Question Header */}
-                                <div
-                                    onClick={() => setActiveIndex(activeIndex === index ? null : index)}
+                    {/* FAQ Items */}
+                    <div className="space-y-3 sm:space-y-4">
+                        {FAQs.map((faq, index) => (
+                            <div key={index}>
+                                <motion.div
                                     className={`
-                                        flex justify-between items-center p-4 
-                                        cursor-pointer
-                                        transition-colors duration-200
+                                        rounded-lg overflow-hidden
+                                        border border-gray-100
+                                        transition-colors
                                         ${activeIndex === index 
-                                            ? 'text-blue-600' 
-                                            : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                                            ? 'bg-blue-50 border-blue-100' 
+                                            : 'bg-white hover:bg-gray-50'
                                         }
                                     `}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: index * 0.1 }}
                                 >
-                                    <Text className="font-medium text-base">
-                                        {faq.question}
-                                    </Text>
-                                    
-                                    <div className={`
-                                        p-1.5 rounded-full 
-                                        transition-all duration-200 
-                                        ${activeIndex === index 
-                                            ? 'bg-blue-100 rotate-45' 
-                                            : 'bg-gray-100'
-                                        }
-                                    `}>
-                                        <IoAdd className="w-4 h-4" />
-                                    </div>
-                                </div>
-                                
-                                {/* Answer Section */}
-                                <AnimatePresence>
-                                    {activeIndex === index && (
-                                        <motion.div
-                                            initial={{ height: 0, opacity: 0 }}
-                                            animate={{ height: 'auto', opacity: 1 }}
-                                            exit={{ height: 0, opacity: 0 }}
+                                    {/* Question Header */}
+                                    <div
+                                        onClick={() => setActiveIndex(activeIndex === index ? null : index)}
+                                        className={`
+                                            flex justify-between items-center p-4 sm:p-5
+                                            cursor-pointer
+                                            transition-colors
+                                            ${activeIndex === index 
+                                                ? 'text-blue-500' 
+                                                : 'text-gray-700 hover:text-blue-500'
+                                            }
+                                        `}
+                                    >
+                                        <Text className="font-medium text-base sm:text-lg pr-2">
+                                            {faq.question}
+                                        </Text>
+                                        
+                                        <motion.div 
+                                            className={`
+                                                p-1 sm:p-1.5 rounded-full flex-shrink-0
+                                                ${activeIndex === index 
+                                                    ? 'bg-blue-100' 
+                                                    : 'bg-gray-100'
+                                                }
+                                            `}
+                                            animate={{ rotate: activeIndex === index ? 45 : 0 }}
                                             transition={{ duration: 0.2 }}
-                                            className="overflow-hidden"
                                         >
-                                            <Text className="px-4 pb-4 text-base text-gray-600">
-                                                {faq.answer}
-                                            </Text>
+                                            <IoAdd className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                                         </motion.div>
-                                    )}
-                                </AnimatePresence>
+                                    </div>
+                                    
+                                    {/* Answer Section */}
+                                    <AnimatePresence>
+                                        {activeIndex === index && (
+                                            <motion.div
+                                                initial={{ height: 0, opacity: 0 }}
+                                                animate={{ height: "auto", opacity: 1 }}
+                                                exit={{ height: 0, opacity: 0 }}
+                                                transition={{ duration: 0.3, ease: "easeInOut" }}
+                                            >
+                                                <Text className="px-4 sm:px-5 pb-4 sm:pb-5 text-sm sm:text-base text-gray-600">
+                                                    {faq.answer}
+                                                </Text>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </motion.div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>

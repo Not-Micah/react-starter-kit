@@ -1,9 +1,9 @@
 export const navBarLinks = [
-    { label: "About", link: "" },
-    { label: "Demo", link: "" },
-    { label: "Testimonials", link: "" },
-    { label: "FAQ", link: "" },
-    { label: "Sign In", link: "" }
+    { label: "About", link: "#about" },
+    { label: "Demo", link: "#demo" },
+    { label: "Testimonials", link: "#testimonials" },
+    { label: "FAQ", link: "#faq" },
+    { label: "Sign In", link: "#sign-in" }
 ]
 
 export const about = [
