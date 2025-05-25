@@ -6,15 +6,15 @@ import { getFirestore } from "firebase/firestore";
 // SignIn and SignOut Functions
 
 export const initializeFirebase = () => {
-    const firebaseConfig = {
-        apiKey: "AIzaSyA7DZakhbXMEo5vY-OTAOwj7oUJb5uJN6k",
-        authDomain: "mira-6cca9.firebaseapp.com",
-        projectId: "mira-6cca9",
-        storageBucket: "mira-6cca9.firebasestorage.app",
-        messagingSenderId: "430327845549",
-        appId: "1:430327845549:web:5fa0457dc509f5fe476c24",
-        measurementId: "G-RKBSFBDNL8"
-        };
+  const firebaseConfig = {
+    apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+    measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
+  };
 
   const app = initializeApp(firebaseConfig);
   return app;

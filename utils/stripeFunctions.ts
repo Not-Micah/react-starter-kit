@@ -55,7 +55,7 @@ import {
     const auth = getUserAuth(true);
     
     const user = auth.currentUser;
-    if (!user) throw new Error("User is not authenticated!");
+    if (!user) throw new Error("User is not authenticated");
   
     let dataWithUrl: any;
     try {
@@ -77,7 +77,7 @@ import {
       throw error;
     }
   
-    return dataWithUrl.url || Promise.reject(new Error("No URL returned!"));
+    return dataWithUrl.url || Promise.reject(new Error("No url returned"));
   };
   
   //////////////////////////////////////////////////////////////////////////
@@ -105,10 +105,10 @@ import {
           // In this implementation we only expect one active or trialing subscription to exist.
           console.log("Subscription snapshot", snapshot.docs.length);
           if (snapshot.docs.length === 0) {
-            console.log("No active or trialing subscriptions found!");
+            console.log("No active or trialing subscriptions found");
             resolve(false);
           } else {
-            console.log("Active or trialing subscription found!");
+            console.log("Active or trialing subscription found");
             resolve(true);
           }
           unsubscribe();
