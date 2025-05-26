@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 import { UserContextProvider } from "@/providers/UserProvider";
+import ToasterProvider from "@/providers/ToastProvider";
 
 // Configure your fonts!
 const geistSans = Geist({
@@ -17,12 +18,11 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-// CUSTOMIZE: Update these values for your specific project!
 const SITE_NAME = "Next.js Starter Kit";
 const SITE_DESCRIPTION = "A modern, SEO-optimized starter kit for your Next.js projects with pre-built components and responsive design.";
 const SITE_URL = "https://your-domain.com";
 
-// SEO metadata configuration!
+// SEO Metadata Configuration!
 export const metadata: Metadata = {
   title: {
     template: `%s | ${SITE_NAME}`,
@@ -58,10 +58,10 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     locale: "en_US",
     type: "website",
-    // CUSTOMIZE: Add your actual OG image!
+    // CUSTOMIZE: Add Your Actual OG Image!
     images: [
       {
-        url: "/images/og-image.jpg", // Create this image in your public folder!
+        url: "/images/og-image.jpg", // Public Folder
         width: 1200,
         height: 630,
         alt: `${SITE_NAME} Preview`,
@@ -72,10 +72,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
-    // CUSTOMIZE: Add your Twitter handle without @
+    // CUSTOMIZE: Add your Twitter Handle Without @
     creator: "yourhandle",
-    // CUSTOMIZE: Add your actual Twitter image!
-    images: ["/images/twitter-image.jpg"], // Create this image in your public folder!
+    // CUSTOMIZE: Add Your Actual Twitter Image!
+    images: ["/images/twitter-image.jpg"], // Public Folder
   },
   robots: {
     index: true,
@@ -107,7 +107,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body className="min-h-screen font-sans antialiased">
-        <UserContextProvider>{children}</UserContextProvider>
+        <UserContextProvider>
+          {children}
+          <ToasterProvider />
+        </UserContextProvider>
       </body>
     </html>
   );
